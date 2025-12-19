@@ -132,8 +132,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Brandenburger Tor',
-                    'assets/Berlin_Oral_BrandenBürger_Tor.mp3',
-                    'assets/brandenburger_tor.jpg'
+                    'Berlin_Oral_BrandenBürger_Tor.mp3',
+                    'brandenburger_tor.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.516272046556736, 13.37770125331996),
@@ -143,8 +143,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Reichstag',
-                    'assets/Oral_Berlin_Reichstag.mp3',
-                    'assets/reichstag.jpg'
+                    'Oral_Berlin_Reichstag.mp3',
+                    'reichstag.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.518595503550465, 13.376103110139926),
@@ -154,8 +154,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Checkpoint Charlie',
-                    'assets/Yeni_Kayit_8.mp3',
-                    'assets/checkpoint_charlie.jpg'
+                    'Yeni_Kayit_8.mp3',
+                    'checkpoint_charlie.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.506045835499755, 13.39061238001653),
@@ -165,8 +165,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Gedenkstätte Deutscher Widerstand',
-                    'assets/Yeni_Kayit_7.mp3',
-                    'assets/german-resistance-memorial-berlin.jpg'
+                    'Yeni_Kayit_7.mp3',
+                    'german-resistance-memorial-berlin.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.50758841506009, 13.362997509894775),
@@ -176,8 +176,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Gedenkstätte Berlin-Hohenschönhausen',
-                    'assets/Yeni_Kayit_6.mp3',
-                    'assets/Gedenkstatte.jpg'
+                    'Yeni_Kayit_6.mp3',
+                    'Gedenkstatte.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.54170069093194, 13.50134937473682),
@@ -187,8 +187,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Sachsenhausen',
-                    'assets/sachsenhausen.mp3',
-                    'assets/sachsenhausen.jpg',
+                    'sachsenhausen.mp3',
+                    'sachsenhausen.jpg',
 
                 )
             ),
@@ -199,8 +199,8 @@ def main(page: ft.Page):
                 ft.Icon(ft.Icons.LOCATION_ON, color=ft.CupertinoColors.DESTRUCTIVE_RED, size=50),
                 on_click=lambda _: marker_event(
                     'Berlin Story Bunker',
-                    'assets/h_bunker.mp3',
-                    'assets/bunker.jpg'
+                    'h_bunker.mp3',
+                    'bunker.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.502901807796526, 13.380349434064692),
@@ -211,7 +211,7 @@ def main(page: ft.Page):
                 on_click=lambda _: marker_event(
                     'Das Holocaust-Mahnmal',
                     'holocaust_Mahmal.mp3',
-                    'assets/manhmal.jpg'
+                    'manhmal.jpg'
                 )
             ),
             coordinates=map.MapLatitudeLongitude(52.51387042814625, 13.378731404820462),
@@ -221,6 +221,7 @@ def main(page: ft.Page):
     marker_layer_ref.current.markers = markers
 
     page.update()
+
 
 
 ft.app(main, assets_dir='assets')
