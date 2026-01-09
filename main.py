@@ -2,9 +2,26 @@ import flet as ft
 import flet_map as map
 import flet_audio as fta
 
+class AudioManager:
+    def __init__(self):
+        self.ad = fta.Audio(src='https://luan.xyz/files/audio/ambient_c_motion.mp3')
+    def changesrc(self, src):
+        self.ad.src = src
+        self.ad.update()
+    async def seek(self, value):
+        await self.ad.seek(value)
+    async def restart(self):
+        await self.ad.seek(0)
+    async def play(self):
+        await self.ad.seek(0)
+        await self.ad.play()
+    async def pause(self):
+        await self.ad.pause()
+    async def resume(self):
+        await self.ad.resume()
+
 
 def main(page: ft.Page):
-    
     global image_width, image_height, text_size
     def update_layout(e):
         global image_width, image_height, text_size
@@ -29,29 +46,26 @@ def main(page: ft.Page):
     
     marker_layer_ref = ft.Ref[map.MarkerLayer]()
 
-    def infos_audio_event(e):
+    async def infos_audio_event(e):
         global audio_state
         if audio_state == 0:
             audio_state = 1
-            infos_audio.play()
+            await infos_audio.play()
             infos_audio_button.content=ft.Icon(ft.Icons.PAUSE_CIRCLE_ROUNDED, size=35)
         elif audio_state == 1:
-            infos_audio.pause()
+            await infos_audio.pause()
             infos_audio_button.content=ft.Icon(ft.Icons.PLAY_CIRCLE_ROUNDED, size=35)
             audio_state = 2
         else:
-            infos_audio.resume()
+            await infos_audio.resume()
             infos_audio_button.content=ft.Icon(ft.Icons.PAUSE_CIRCLE_ROUNDED, size=35)
             audio_state = 1
         infos_audio_button.update()
 
 
 
-    infos_audio = fta.Audio(
-        src='https://luan.xyz/files/audio/ambient_c_motion.mp3',
-        autoplay=False,
-    )
-    page.overlay.append(infos_audio)
+    infos_audio = AudioManager()
+    #page.overlay.append(infos_audio)
     page.title = 'Audioguide Berlin'
 
     global audio_state
@@ -79,7 +93,7 @@ def main(page: ft.Page):
             padding=15,
         ))
     infos_audio_restart = ft.TextButton(
-        on_click=lambda _: infos_audio.seek(0),
+        on_click=infos_audio.restart,
         content=ft.Icon(ft.Icons.RESTART_ALT_ROUNDED, size=35),
         style=ft.ButtonStyle(
             color="#ffffff",
@@ -106,10 +120,8 @@ def main(page: ft.Page):
     def marker_event(title, audio, image):
         global audio_state
         audio_state = 0
-        infos_audio.seek(0)
         infos_title.value = title
-        infos_audio.src = audio
-        infos_audio.update()
+        infos_audio.changesrc(audio)
         infos_image.src = image
         main_map.visible = False
         infos.visible = True
@@ -122,16 +134,16 @@ def main(page: ft.Page):
 
     main_map = map.Map(
             expand=True,
-            initial_center=map.MapLatitudeLongitude(52.5172200412667, 13.395079719263894),
-            initial_zoom=15,
-            interaction_configuration=map.MapInteractionConfiguration(
-                flags=map.MapInteractiveFlag.ALL  & ~map.MapInteractiveFlag.ROTATE
+            initial_center=map.MapLatitudeLongitude(52.63174064450864, 13.449757678292086),
+            initial_zoom=11.024999999999991,
+            interaction_configuration=map.InteractionConfiguration(
+                flags=map.InteractionFlag.ALL  & ~map.InteractionFlag.ROTATE
             ),
             on_init=lambda e: print(f"Initialized Map"),
             on_tap=handle_tap,
             on_secondary_tap=handle_tap,
             on_long_press=handle_tap,
-            # on_event=lambda e: print(e),
+            #on_event=lambda e: print(e),
             layers=[
                 map.TileLayer(
                     url_template="https://tile.openstreetmap.org/{z}/{x}/{y}.png",
