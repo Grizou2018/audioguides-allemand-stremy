@@ -52,7 +52,7 @@ def main(page: ft.Page):
         autoplay=False,
     )
     page.overlay.append(infos_audio)
-    page.title = 'Audio-Guide Berlin'
+    page.title = 'Audioguide Berlin'
 
     global audio_state
     audio_state = 0
@@ -248,4 +248,5 @@ def main(page: ft.Page):
 
 
 ft.app(main, assets_dir='assets')
+
 
