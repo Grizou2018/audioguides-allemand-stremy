@@ -101,7 +101,7 @@ def main(page: ft.Page):
     ], expand=True, alignment=ft.MainAxisAlignment.CENTER)
 
 
-    infos = ft.Container(infos_column, expand=True, visible=False, alignment=ft.alignment.center)
+    infos = ft.Container(infos_column, expand=True, visible=False, alignment=ft.Alignment(0,0))
 
     def marker_event(title, audio, image):
         global audio_state
@@ -248,6 +248,7 @@ def main(page: ft.Page):
 
 
 ft.app(main, assets_dir='assets')
+
 
 
 
