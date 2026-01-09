@@ -34,14 +34,14 @@ def main(page: ft.Page):
         if audio_state == 0:
             audio_state = 1
             infos_audio.play()
-            infos_audio_button.content=ft.Icon(name=ft.Icons.PAUSE_CIRCLE_ROUNDED, size=35)
+            infos_audio_button.content=ft.Icon(ft.Icons.PAUSE_CIRCLE_ROUNDED, size=35)
         elif audio_state == 1:
             infos_audio.pause()
-            infos_audio_button.content=ft.Icon(name=ft.Icons.PLAY_CIRCLE_ROUNDED, size=35)
+            infos_audio_button.content=ft.Icon(ft.Icons.PLAY_CIRCLE_ROUNDED, size=35)
             audio_state = 2
         else:
             infos_audio.resume()
-            infos_audio_button.content=ft.Icon(name=ft.Icons.PAUSE_CIRCLE_ROUNDED, size=35)
+            infos_audio_button.content=ft.Icon(ft.Icons.PAUSE_CIRCLE_ROUNDED, size=35)
             audio_state = 1
         infos_audio_button.update()
 
@@ -63,7 +63,7 @@ def main(page: ft.Page):
         infos_audio.pause()
         main_map.visible = True
         infos.visible = False
-        infos_audio_button.content = ft.Icon(name=ft.Icons.PLAY_CIRCLE_ROUNDED, size=35)
+        infos_audio_button.content = ft.Icon(ft.Icons.PLAY_CIRCLE_ROUNDED, size=35)
 
         page.update()
 
@@ -71,7 +71,7 @@ def main(page: ft.Page):
 
     infos_audio_button = ft.TextButton(
         on_click=infos_audio_event,
-        content=ft.Icon(name=ft.Icons.PLAY_CIRCLE_ROUNDED, size=35),
+        content=ft.Icon(ft.Icons.PLAY_CIRCLE_ROUNDED, size=35),
         style=ft.ButtonStyle(
             color="#ffffff",
             bgcolor="#1f5eff",
@@ -80,7 +80,7 @@ def main(page: ft.Page):
         ))
     infos_audio_restart = ft.TextButton(
         on_click=lambda _: infos_audio.seek(0),
-        content=ft.Icon(name=ft.Icons.RESTART_ALT_ROUNDED, size=35),
+        content=ft.Icon(ft.Icons.RESTART_ALT_ROUNDED, size=35),
         style=ft.ButtonStyle(
             color="#ffffff",
             bgcolor="#1f5eff",
@@ -248,5 +248,6 @@ def main(page: ft.Page):
 
 
 ft.app(main, assets_dir='assets')
+
 
 
