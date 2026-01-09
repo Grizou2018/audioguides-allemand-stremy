@@ -22,11 +22,6 @@ class AudioManager:
 
 
 def main(page: ft.Page):
-
-    page.fonts = {
-    "MaterialIcons": "MaterialIcons-Regular.ttf",
-    "NotoSans": "NotoSans-Regular.ttf"
-        }
     
     global image_width, image_height, text_size
     def update_layout(e):
@@ -266,6 +261,7 @@ def main(page: ft.Page):
 
 
 ft.app(main, assets_dir='assets')
+
 
 
 
