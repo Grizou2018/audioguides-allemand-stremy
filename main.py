@@ -90,7 +90,7 @@ def main(page: ft.Page):
 
     infos_title = ft.Text('...', size=text_size)
 
-    infos_image = ft.Image(width=image_width, height=image_height)
+    infos_image = ft.Image(width=image_width, height=image_height, src='reichstag.jpg')
 
     infos_column = ft.Column([
         ft.Row([infos_title], alignment=ft.MainAxisAlignment.CENTER),
@@ -248,6 +248,7 @@ def main(page: ft.Page):
 
 
 ft.app(main, assets_dir='assets')
+
 
 
 
