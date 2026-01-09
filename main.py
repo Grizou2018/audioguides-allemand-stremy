@@ -4,6 +4,29 @@ import flet_audio as fta
 
 
 def main(page: ft.Page):
+    
+    global image_width, image_height, text_size
+    def update_layout(e):
+        global image_width, image_height, text_size
+        if page.width < page.height:
+            #Mobile
+            image_width = 320
+            image_height = 240
+            text_size = 25
+        else:
+            #Desktop
+            image_width = 640
+            image_height = 480
+            text_size = 50
+
+
+        page.update()
+
+    page.on_resize = update_layout
+
+    update_layout(None)
+
+    
     marker_layer_ref = ft.Ref[map.MarkerLayer]()
 
     def infos_audio_event(e):
@@ -65,9 +88,9 @@ def main(page: ft.Page):
             padding=15,
         ))
 
-    infos_title = ft.Text('...', size=50)
+    infos_title = ft.Text('...', size=text_size)
 
-    infos_image = ft.Image(width=640, height=480)
+    infos_image = ft.Image(width=image_width, height=image_height)
 
     infos_column = ft.Column([
         ft.Row([infos_title], alignment=ft.MainAxisAlignment.CENTER),
@@ -102,7 +125,7 @@ def main(page: ft.Page):
             initial_center=map.MapLatitudeLongitude(52.5172200412667, 13.395079719263894),
             initial_zoom=15,
             interaction_configuration=map.MapInteractionConfiguration(
-                flags=map.MapInteractiveFlag.ALL
+                flags=map.MapInteractiveFlag.ALL  & ~map.MapInteractiveFlag.ROTATE
             ),
             on_init=lambda e: print(f"Initialized Map"),
             on_tap=handle_tap,
@@ -225,3 +248,4 @@ def main(page: ft.Page):
 
 
 ft.app(main, assets_dir='assets')
+
