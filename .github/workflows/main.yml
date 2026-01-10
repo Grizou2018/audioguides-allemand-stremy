@@ -55,8 +55,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install flet-cli==0.28.3
           pip install flet==0.28.3
-          pip install flet-map
-          pip install flet_audio
           
       - name: Flet Build Web
         run: |
