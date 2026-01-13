@@ -47,26 +47,26 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-
+      
     - name: Setup Python ${{ env.PYTHON_VERSION }}
       uses: actions/setup-python@v2
       with:
         python-version: ${{ env.PYTHON_VERSION }}
-
+        
       # -----------------------------
       # ✅ FIX FLUTTER (IMPORTANT)
       # -----------------------------
-      - name: Install Flutter 3.38.5
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: "3.38.5"
-          channel: stable
+    - name: Install Flutter 3.38.5
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: "3.38.5"
+        channel: stable
 
-      - name: Disable Flutter analytics & prompts
-        run: flutter config --no-analytics
+    - name: Disable Flutter analytics & prompts
+      run: flutter config --no-analytics
 
-      - name: Flutter doctor
-        run: flutter doctor -v
+    - name: Flutter doctor
+      run: flutter doctor -v
 
     - name: Install flet-cli ${{ env.FLET_CLI_VERSION }}
       run: |
