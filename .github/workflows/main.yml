@@ -72,8 +72,9 @@ jobs:
 
     - name: Clean build cache
       run: |
-        rm -rf build
-        rm -rf ~/.pub-cache
+            rm -rf ~/.pub-cache
+            rm -rf ~/.cache/flutter
+            rm -rf build
 
     - name: Flet Build Web
       run: |
