@@ -72,6 +72,7 @@ jobs:
         pip install flet
         pip install flet-map
         pip install flet-audio
+        pip install "flet[all]"
         pip install --upgrade flet
         pip install --upgrade flet-audio
         pip install --upgrade flet-map
