@@ -53,13 +53,10 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
         
-      # -----------------------------
-      # ✅ FIX FLUTTER (IMPORTANT)
-      # -----------------------------
-    - name: Install Flutter 3.38.5
+    - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: "3.38.5"
+        flutter-version: "3.41.4"
         channel: stable
 
     - name: Disable Flutter analytics & prompts
